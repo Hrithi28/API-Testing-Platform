@@ -1,0 +1,104 @@
+{
+  "baseline_vs_full": {
+    "baseline": {
+      "tests": 8,
+      "detected": 0,
+      "total": 8,
+      "detection_rate": 0.0,
+      "missed": {
+        "D1": "Negative / non-integer petId returns 500 instead of 400",
+        "D2": "Missing required 'name' field is accepted with 201 instead of 400",
+        "D3": "Broken object-level authorization: any authenticated user can read any order",
+        "D4": "Latency degrades severely when limit parameter is large (no pagination cap)",
+        "D5": "Oversized name (>256 chars) causes unhandled 500",
+        "D6": "SQL-like injection payload is echoed back unsanitised in an error trace",
+        "D7": "Missing auth token is accepted -- endpoint does not enforce authentication",
+        "D8": "For petId>900 the response omits the required 'status' field (schema drift)"
+      }
+    },
+    "full": {
+      "tests": 47,
+      "detected": 8,
+      "total": 8,
+      "detection_rate": 1.0,
+      "missed": {}
+    }
+  },
+  "repeat_runs": [
+    {
+      "run": 1,
+      "detected": 8,
+      "detection_rate": 1.0,
+      "findings": 21,
+      "wall_s": 3.676,
+      "p50_ms": 6.22,
+      "p95_ms": 14.76
+    },
+    {
+      "run": 2,
+      "detected": 8,
+      "detection_rate": 1.0,
+      "findings": 21,
+      "wall_s": 3.656,
+      "p50_ms": 5.61,
+      "p95_ms": 15.21
+    },
+    {
+      "run": 3,
+      "detected": 8,
+      "detection_rate": 1.0,
+      "findings": 21,
+      "wall_s": 3.635,
+      "p50_ms": 5.55,
+      "p95_ms": 11.02
+    },
+    {
+      "run": 4,
+      "detected": 8,
+      "detection_rate": 1.0,
+      "findings": 21,
+      "wall_s": 3.796,
+      "p50_ms": 5.11,
+      "p95_ms": 12.69
+    },
+    {
+      "run": 5,
+      "detected": 8,
+      "detection_rate": 1.0,
+      "findings": 21,
+      "wall_s": 3.657,
+      "p50_ms": 5.58,
+      "p95_ms": 9.68
+    }
+  ],
+  "repeat_summary": {
+    "detected_mean": 8.0,
+    "detected_sd": 0.0,
+    "wall_mean_s": 3.684,
+    "wall_sd_s": 0.05748391079249909
+  },
+  "cross_validation": {
+    "n_samples": 47,
+    "positive_rate": 0.4255,
+    "precision": 1.0,
+    "recall": 0.9,
+    "f1": 0.9474,
+    "false_positive_rate": 0.0,
+    "confusion_matrix": {
+      "tn": 27,
+      "fp": 0,
+      "fn": 2,
+      "tp": 18
+    }
+  },
+  "defects_by_category_found": {
+    "D1": "validation",
+    "D2": "validation",
+    "D3": "security-bola",
+    "D4": "performance",
+    "D5": "validation",
+    "D6": "security-injection",
+    "D7": "auth",
+    "D8": "schema"
+  }
+}

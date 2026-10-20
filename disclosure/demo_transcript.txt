@@ -1,0 +1,39 @@
+
+== 1. Start two real open-source services (httpbin, ChromaDB)
+targets up: httpbin :8081, chroma :8082
+
+== 2. Run the pipeline on httpbin: parse spec -> generate tests -> execute -> semantic oracle -> detect -> rank
+[M1] httpbin: 68 operations (Swagger 2.0)
+[M2] 271 test cases  {'positive': 73, 'negative': 39, 'boundary': 67, 'security': 92}
+[M3] executed 271 calls in 0.6s; 5xx=8 unexpected=130 transport-errors=0
+[M3b] oracle: 0 responses flagged (0 constraint, 0 semantic violations)
+[M4/M5] findings: baseline=142  with_oracle=142
+[M6] report -> /tmp/demo_gate/run_report.json
+
+== 3. CI quality gate with an EMPTY baseline: new actionable findings should FAIL the build
+[gate] httpbin: 271 tests, 142 raw findings -> 4 distinct actionable (4 new, 0 resolved, 0 non-reproducible 5xx ignored)
+  [NEW ] server-error    DELETE /delay/{delay}  - HTTP 500 on malformed/unsupported input (reproduces 3/3)
+  [NEW ] server-error    PATCH /delay/{delay}  - HTTP 500 on malformed/unsupported input (reproduces 3/3)
+  [NEW ] server-error    POST /delay/{delay}  - HTTP 500 on malformed/unsupported input (reproduces 3/3)
+  [NEW ] server-error    PUT /delay/{delay}  - HTTP 500 on malformed/unsupported input (reproduces 3/3)
+[gate] FAIL: new actionable findings
+exit code: 1
+
+== 4. Accept them into the baseline, then run again: the gate should PASS
+[gate] baseline updated (4 accepted findings) -> /tmp/demo_base.json
+[gate] PASS
+
+== 5. The defect itself, reproduced with one command
+GET /delay/abc -> HTTP 500
+
+== 6. Semantic oracle sensitivity on real ChromaDB responses (147 injected faults)
+[M6] report -> /tmp/demo_chroma/run_report.json
+clean control: baseline flags 10, oracle flags 3 of 27
+
+operator/kind          mutants  baseline  oracle
+BAD_UUID/implied            12      0 (0%)   12 (100%)
+EMPTY_ID/implied            15      0 (0%)   12 (80%)
+LIMIT_EXC/implied            2      0 (0%)    2 (100%)
+NEG_NUM/implied             26      0 (0%)   16 (62%)
+NEG_NUM/other               92      0 (0%)   47 (51%)
+TOTAL                      147      0 (0%)   89 (61%)

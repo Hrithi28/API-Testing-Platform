@@ -1,0 +1,13 @@
+{
+  "name": "httpbin",
+  "description": "httpbin 0.10.4 -- widely used open-source HTTP request/response service (Swagger 2.0 via flasgger)",
+  "spec": "targets/httpbin_spec.json",
+  "base_url": "http://127.0.0.1:8081",
+  "health_path": "/get",
+  "default_headers": {"Accept": "*/*"},
+  "exclude": ["^GET /delay/", "^GET /drip$", "^GET /stream", "^GET /range/"],
+  "fixtures": {},
+  "fixtures_by_method": {},
+  "extra_expected_by_method": {},
+  "setup": null
+}

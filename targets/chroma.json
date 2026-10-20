@@ -1,0 +1,13 @@
+{
+  "name": "chroma",
+  "description": "ChromaDB 1.5.9 server -- open-source vector database REST API v2 (OpenAPI 3.1)",
+  "spec": "targets/chroma_openapi.json",
+  "base_url": "http://127.0.0.1:8082",
+  "health_path": "/api/v2/heartbeat",
+  "default_headers": {"Accept": "application/json"},
+  "exclude": ["^POST /api/v2/reset$"],
+  "fixtures": {"tenant": "default_tenant", "tenant_name": "default_tenant", "database": "default_database"},
+  "fixtures_by_method": {"DELETE": {"collection_id": "00000000-0000-0000-0000-000000000000", "database": "no_such_db"}},
+  "extra_expected_by_method": {"DELETE": [404]},
+  "setup": "chroma"
+}

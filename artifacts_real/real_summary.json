@@ -1,0 +1,284 @@
+{
+ "targets": {
+  "httpbin": {
+   "description": "httpbin 0.10.4 -- widely used open-source HTTP request/response service (Swagger 2.0 via flasgger)",
+   "operations": 68,
+   "tests": 271,
+   "by_category": {
+    "positive": 73,
+    "negative": 39,
+    "boundary": 67,
+    "security": 92
+   },
+   "server_errors_5xx": 8,
+   "raw_findings_baseline": 142,
+   "raw_findings_with_oracle": 142,
+   "oracle_flagged_responses": 0,
+   "triage": {
+    "actionable": 8,
+    "doc_gap": 26,
+    "unimplemented": 0,
+    "by_design": 108,
+    "flaky": 0
+   },
+   "runtime_s": 2.57
+  },
+  "chroma": {
+   "description": "ChromaDB 1.5.9 server -- open-source vector database REST API v2 (OpenAPI 3.1)",
+   "operations": 34,
+   "tests": 664,
+   "by_category": {
+    "positive": 38,
+    "security": 321,
+    "negative": 97,
+    "boundary": 208
+   },
+   "server_errors_5xx": 86,
+   "raw_findings_baseline": 219,
+   "raw_findings_with_oracle": 220,
+   "oracle_flagged_responses": 3,
+   "triage": {
+    "actionable": 25,
+    "doc_gap": 47,
+    "unimplemented": 72,
+    "by_design": 75,
+    "flaky": 1
+   },
+   "runtime_s": 3.5
+  }
+ },
+ "total_raw_findings": 362,
+ "total_triage": {
+  "actionable": 33,
+  "doc_gap": 73,
+  "unimplemented": 72,
+  "by_design": 183,
+  "flaky": 1
+ },
+ "oracle_mutation": {
+  "samples": 27,
+  "endpoints": 11,
+  "clean_control": {
+   "baseline_flags": 10,
+   "oracle_flags": 3,
+   "n": 27
+  },
+  "operators": {
+   "BAD_UUID/implied": {
+    "n": 12,
+    "baseline": 0,
+    "oracle": 12,
+    "either": 12
+   },
+   "EMPTY_ID/implied": {
+    "n": 15,
+    "baseline": 0,
+    "oracle": 12,
+    "either": 12
+   },
+   "LIMIT_EXC/implied": {
+    "n": 2,
+    "baseline": 0,
+    "oracle": 2,
+    "either": 2
+   },
+   "NEG_NUM/implied": {
+    "n": 26,
+    "baseline": 0,
+    "oracle": 16,
+    "either": 16
+   },
+   "NEG_NUM/other": {
+    "n": 92,
+    "baseline": 0,
+    "oracle": 47,
+    "either": 47
+   }
+  },
+  "total": {
+   "n": 147,
+   "baseline": 0,
+   "oracle": 89,
+   "either": 89
+  }
+ },
+ "retrain": {
+  "label_counts": {
+   "httpbin": {
+    "n": 271,
+    "defects": 8
+   },
+   "chroma": {
+    "n": 663,
+    "defects": 25
+   }
+  },
+  "cross_target": {
+   "train_httpbin__test_chroma": {
+    "A_rule_flag": {
+     "precision": 0.1142,
+     "recall": 1.0,
+     "f1": 0.2049,
+     "tp": 25,
+     "fp": 194,
+     "fn": 0,
+     "tn": 444,
+     "n": 663,
+     "positives": 25
+    },
+    "B_weak_label_rf": {
+     "precision": 0.0681,
+     "recall": 0.52,
+     "f1": 0.1204,
+     "tp": 13,
+     "fp": 178,
+     "fn": 12,
+     "tn": 460,
+     "n": 663,
+     "positives": 25
+    },
+    "C_verified_rf": {
+     "precision": 0.1266,
+     "recall": 0.4,
+     "f1": 0.1923,
+     "tp": 10,
+     "fp": 69,
+     "fn": 15,
+     "tn": 569,
+     "n": 663,
+     "positives": 25
+    },
+    "C2_portable_rf": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "tp": 0,
+     "fp": 31,
+     "fn": 25,
+     "tn": 607,
+     "n": 663,
+     "positives": 25
+    },
+    "D_rubric_rule": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0,
+     "tp": 25,
+     "fp": 0,
+     "fn": 0,
+     "tn": 638,
+     "n": 663,
+     "positives": 25
+    },
+    "C_top_features": [
+     [
+      "status_code",
+      0.274
+     ],
+     [
+      "is_server_error",
+      0.239
+     ],
+     [
+      "response_size",
+      0.163
+     ],
+     [
+      "is_write",
+      0.095
+     ],
+     [
+      "is_client_error",
+      0.067
+     ]
+    ]
+   },
+   "train_chroma__test_httpbin": {
+    "A_rule_flag": {
+     "precision": 0.0563,
+     "recall": 1.0,
+     "f1": 0.1067,
+     "tp": 8,
+     "fp": 134,
+     "fn": 0,
+     "tn": 129,
+     "n": 271,
+     "positives": 8
+    },
+    "B_weak_label_rf": {
+     "precision": 0.0429,
+     "recall": 0.75,
+     "f1": 0.0811,
+     "tp": 6,
+     "fp": 134,
+     "fn": 2,
+     "tn": 129,
+     "n": 271,
+     "positives": 8
+    },
+    "C_verified_rf": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 8,
+     "tn": 263,
+     "n": 271,
+     "positives": 8
+    },
+    "C2_portable_rf": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 8,
+     "tn": 263,
+     "n": 271,
+     "positives": 8
+    },
+    "D_rubric_rule": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0,
+     "tp": 8,
+     "fp": 0,
+     "fn": 0,
+     "tn": 263,
+     "n": 271,
+     "positives": 8
+    },
+    "C_top_features": [
+     [
+      "is_client_error",
+      0.22
+     ],
+     [
+      "is_write",
+      0.164
+     ],
+     [
+      "status_code",
+      0.151
+     ],
+     [
+      "response_size",
+      0.142
+     ],
+     [
+      "n_schema_violations",
+      0.125
+     ]
+    ]
+   }
+  },
+  "pooled_cv": {
+   "mean_precision": 1.0,
+   "mean_recall": 0.9576,
+   "mean_f1": 0.9783,
+   "sd_f1": 0.0077,
+   "runs": 5
+  }
+ }
+}

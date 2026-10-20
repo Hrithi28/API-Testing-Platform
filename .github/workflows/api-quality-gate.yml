@@ -1,0 +1,49 @@
+name: API quality gate
+
+# Runs the AI-powered API testing pipeline against the service under test on every
+# pull request and fails the build when a NEW actionable finding appears.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [httpbin, chroma]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements-ci.txt
+
+      # Replace this step with the command that starts YOUR service under test.
+      - name: Start service under test
+        run: bash scripts/start_real_targets.sh "$(dirname "$(which python)")"
+
+      - name: Run quality gate
+        run: |
+          python src/ci_gate.py --target targets/${{ matrix.target }}.json \
+            --out ci/out_${{ matrix.target }}
+
+      - name: Publish JUnit report
+        if: always()
+        uses: mikepenz/action-junit-report@v4
+        with:
+          report_paths: ci/out_${{ matrix.target }}/junit.xml
+          check_name: API gate (${{ matrix.target }})
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-gate-${{ matrix.target }}
+          path: ci/out_${{ matrix.target }}/

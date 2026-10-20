@@ -1,0 +1,47 @@
+{
+ "samples": 27,
+ "endpoints": 11,
+ "clean_control": {
+  "baseline_flags": 10,
+  "oracle_flags": 3,
+  "n": 27
+ },
+ "operators": {
+  "BAD_UUID/implied": {
+   "n": 12,
+   "baseline": 0,
+   "oracle": 12,
+   "either": 12
+  },
+  "EMPTY_ID/implied": {
+   "n": 15,
+   "baseline": 0,
+   "oracle": 12,
+   "either": 12
+  },
+  "LIMIT_EXC/implied": {
+   "n": 2,
+   "baseline": 0,
+   "oracle": 2,
+   "either": 2
+  },
+  "NEG_NUM/implied": {
+   "n": 26,
+   "baseline": 0,
+   "oracle": 16,
+   "either": 16
+  },
+  "NEG_NUM/other": {
+   "n": 92,
+   "baseline": 0,
+   "oracle": 47,
+   "either": 47
+  }
+ },
+ "total": {
+  "n": 147,
+  "baseline": 0,
+  "oracle": 89,
+  "either": 89
+ }
+}

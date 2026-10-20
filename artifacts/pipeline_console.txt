@@ -1,0 +1,47 @@
+==========================================================================
+AI-POWERED INTELLIGENT API TESTING PLATFORM  --  pipeline run
+==========================================================================
+
+[M1] Spec parsed        : 7 endpoints from petstore_openapi.json
+     base URL           : http://127.0.0.1:5099
+     dependency links   : 2
+
+[M2] Test cases         : 47  (backend: schema-rule)
+     positive           : 8
+     negative           : 6
+     boundary           : 22
+     security           : 11
+
+[M3] Executing 47 test cases against http://127.0.0.1:5099 ...
+    executed 10/47
+    executed 20/47
+    executed 30/47
+    executed 40/47
+     completed          : 47 calls in 3.013s
+     5xx responses      : 11
+     unexpected status  : 17
+     schema violations  : 1
+     latency p50 / p95  : 5.1 ms / 16.7 ms
+
+[M4] Anomaly detection  : 21 findings from 47 responses
+     RF precision       : 1.0
+     RF recall          : 0.8333
+     RF F1              : 0.9091
+     false-positive rate: 0.0
+     top features       : status_unexpected=0.346, status_code=0.129, is_security_probe=0.1071, is_server_error=0.0797
+
+[M5] Risk prioritisation: P1=9  P2=4  P3=7  P4=1
+     top 5 findings     :
+       [P1] 0.89  POST /pets               security      createPet-010
+       [P1] 0.88  POST /pets               security      createPet-009
+       [P1] 0.84  GET /orders/{orderId}    security      getOrder-008
+       [P1] 0.78  DELETE /pets/{petId}     security      deletePet-008
+       [P1] 0.77  POST /pets               regression    createPet-003
+
+[EVAL] Endpoint coverage : 100.0%  (7/7)
+       Parameter coverage: 100.0%
+       Defects detected  : 8/8 (100.0%)
+       Total runtime     : 3.881s
+
+[M6] Report written     : /home/claude/apitest/artifacts/run_report.json
+==========================================================================

@@ -1,0 +1,555 @@
+[
+ {
+  "id": 1,
+  "test_id": "get_attached_function-023",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 2,
+  "test_id": "indexing_status-005",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 3,
+  "test_id": "collection_count-004",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 4,
+  "test_id": "update_collection-016",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 5,
+  "test_id": "put_/delay/{delay}-001",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 6,
+  "test_id": "list_databases-006",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 7,
+  "test_id": "post_/redirect-to-005",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 8,
+  "test_id": "attach_function-008",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 9,
+  "test_id": "patch_/delay/{delay}-002",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 10,
+  "test_id": "indexing_status-011",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 11,
+  "test_id": "get_/deny-001",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 12,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}/{algorithm}-013",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 13,
+  "test_id": "collection_get-030",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 14,
+  "test_id": "list_collections-012",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 15,
+  "test_id": "get_collection_by_crn-007",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 16,
+  "test_id": "list_collections-002",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 17,
+  "test_id": "delete_/delay/{delay}-001",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 18,
+  "test_id": "indexing_status-002",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 19,
+  "test_id": "indexing_status-003",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 20,
+  "test_id": "list_collections-009",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 21,
+  "test_id": "indexing_status-006",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 22,
+  "test_id": "create_collection-021",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 23,
+  "test_id": "collection_add-008",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 24,
+  "test_id": "list_databases-010",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 25,
+  "test_id": "get_/html-001",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 26,
+  "test_id": "put_/redirect-to-005",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 27,
+  "test_id": "delete_/delay/{delay}-002",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 28,
+  "test_id": "get_/cache-008",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 29,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}-017",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 30,
+  "test_id": "fork_count-001",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 31,
+  "test_id": "indexing_status-008",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 32,
+  "test_id": "indexing_status-012",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 33,
+  "test_id": "post_/delay/{delay}-002",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 34,
+  "test_id": "update_tenant-009",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 35,
+  "test_id": "list_databases-002",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 36,
+  "test_id": "get_collection_by_id-014",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 37,
+  "test_id": "indexing_status-022",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 38,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}-014",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 39,
+  "test_id": "indexing_status-020",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 40,
+  "test_id": "collection_update-001",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 41,
+  "test_id": "get_attached_function-019",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 42,
+  "test_id": "get_/encoding/utf8-001",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 43,
+  "test_id": "attach_function-034",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 44,
+  "test_id": "patch_/delay/{delay}-001",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 45,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}/{algorithm}-017",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 46,
+  "test_id": "collection_count-024",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 47,
+  "test_id": "healthcheck-001",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 48,
+  "test_id": "collection_delete-021",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 49,
+  "test_id": "collection_delete-003",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 50,
+  "test_id": "collection_search-001",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 51,
+  "test_id": "list_databases-009",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 52,
+  "test_id": "post_/redirect-to-002",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 53,
+  "test_id": "post_/delay/{delay}-001",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 54,
+  "test_id": "collection_query-005",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 55,
+  "test_id": "indexing_status-014",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 56,
+  "test_id": "list_databases-001",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 57,
+  "test_id": "get_collection_by_crn-002",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 58,
+  "test_id": "indexing_status-021",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 59,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}/{algorithm}/{stale_after}-022",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 60,
+  "test_id": "create_collection-017",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 61,
+  "test_id": "delete_database-010",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 62,
+  "test_id": "indexing_status-015",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 63,
+  "test_id": "get_/cookies/set-002",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 64,
+  "test_id": "indexing_status-001",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 65,
+  "test_id": "create_tenant-004",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 66,
+  "test_id": "list_collections-001",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 67,
+  "test_id": "list_databases-008",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 68,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}/{algorithm}-021",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 69,
+  "test_id": "get_collection-018",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 70,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}/{algorithm}/{stale_after}-015",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 71,
+  "test_id": "create_database-012",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 72,
+  "test_id": "get_/deflate-001",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 73,
+  "test_id": "get_/digest-auth/{qop}/{user}/{passwd}-003",
+  "target": "httpbin",
+  "rubric_label": 0,
+  "rule": "R0"
+ },
+ {
+  "id": 74,
+  "test_id": "create_database-013",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 75,
+  "test_id": "attach_function-028",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 76,
+  "test_id": "list_collections-011",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ },
+ {
+  "id": 77,
+  "test_id": "put_/delay/{delay}-002",
+  "target": "httpbin",
+  "rubric_label": 1,
+  "rule": "R1"
+ },
+ {
+  "id": 78,
+  "test_id": "detach_function-010",
+  "target": "chroma",
+  "rubric_label": 0,
+  "rule": "R3"
+ },
+ {
+  "id": 79,
+  "test_id": "get_collection_by_id-001",
+  "target": "chroma",
+  "rubric_label": 1,
+  "rule": "R2"
+ }
+]

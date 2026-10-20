@@ -1,0 +1,3774 @@
+{
+  "generated_at": "2026-10-08 00:56:05",
+  "spec_file": "petstore_openapi.json",
+  "base_url": "http://127.0.0.1:5099",
+  "generator_backend": "schema-rule",
+  "endpoints": [
+    {
+      "operation_id": "listPets",
+      "method": "GET",
+      "path": "/pets",
+      "summary": "List pets",
+      "parameters": [
+        {
+          "name": "limit",
+          "location": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "default": 20
+          }
+        }
+      ],
+      "request_schema": null,
+      "response_schemas": {
+        "200": {
+          "type": "object",
+          "required": [
+            "items",
+            "count"
+          ],
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  },
+                  "tag": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "available",
+                      "pending",
+                      "sold"
+                    ]
+                  }
+                }
+              }
+            },
+            "count": {
+              "type": "integer"
+            }
+          }
+        },
+        "400": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "requires_auth": false,
+      "signature": "GET /pets"
+    },
+    {
+      "operation_id": "createPet",
+      "method": "POST",
+      "path": "/pets",
+      "summary": "Create a pet",
+      "parameters": [],
+      "request_schema": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schemas": {
+        "201": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "status"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "tag": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ]
+            }
+          }
+        },
+        "400": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "requires_auth": false,
+      "signature": "POST /pets"
+    },
+    {
+      "operation_id": "searchPets",
+      "method": "GET",
+      "path": "/pets/search",
+      "summary": "Search pets by name",
+      "parameters": [
+        {
+          "name": "q",
+          "location": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 64
+          }
+        }
+      ],
+      "request_schema": null,
+      "response_schemas": {
+        "200": {
+          "type": "object",
+          "required": [
+            "items",
+            "count"
+          ],
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  },
+                  "tag": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "available",
+                      "pending",
+                      "sold"
+                    ]
+                  }
+                }
+              }
+            },
+            "count": {
+              "type": "integer"
+            }
+          }
+        },
+        "400": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "requires_auth": false,
+      "signature": "GET /pets/search"
+    },
+    {
+      "operation_id": "getPet",
+      "method": "GET",
+      "path": "/pets/{petId}",
+      "summary": "Get a pet by id",
+      "parameters": [
+        {
+          "name": "petId",
+          "location": "path",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      ],
+      "request_schema": null,
+      "response_schemas": {
+        "200": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "status"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "tag": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ]
+            }
+          }
+        },
+        "400": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        },
+        "404": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "requires_auth": false,
+      "signature": "GET /pets/{petId}"
+    },
+    {
+      "operation_id": "deletePet",
+      "method": "DELETE",
+      "path": "/pets/{petId}",
+      "summary": "Delete a pet",
+      "parameters": [
+        {
+          "name": "petId",
+          "location": "path",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      ],
+      "request_schema": null,
+      "response_schemas": {
+        "401": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "requires_auth": true,
+      "signature": "DELETE /pets/{petId}"
+    },
+    {
+      "operation_id": "getOrder",
+      "method": "GET",
+      "path": "/orders/{orderId}",
+      "summary": "Get an order by id",
+      "parameters": [
+        {
+          "name": "orderId",
+          "location": "path",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      ],
+      "request_schema": null,
+      "response_schemas": {
+        "200": {
+          "type": "object",
+          "required": [
+            "id",
+            "petId",
+            "ownerId",
+            "quantity"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "petId": {
+              "type": "integer"
+            },
+            "ownerId": {
+              "type": "integer"
+            },
+            "quantity": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        },
+        "401": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        },
+        "404": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "requires_auth": true,
+      "signature": "GET /orders/{orderId}"
+    },
+    {
+      "operation_id": "health",
+      "method": "GET",
+      "path": "/health",
+      "summary": "Health check",
+      "parameters": [],
+      "request_schema": null,
+      "response_schemas": {},
+      "requires_auth": false,
+      "signature": "GET /health"
+    }
+  ],
+  "dependency_graph": {
+    "GET /pets": [],
+    "POST /pets": [],
+    "GET /pets/search": [],
+    "GET /pets/{petId}": [
+      "POST /pets"
+    ],
+    "DELETE /pets/{petId}": [
+      "POST /pets"
+    ],
+    "GET /orders/{orderId}": [],
+    "GET /health": []
+  },
+  "counts": {
+    "endpoints": 7,
+    "test_cases": 47,
+    "by_category": {
+      "positive": 8,
+      "negative": 6,
+      "boundary": 22,
+      "security": 11
+    },
+    "executed": 47,
+    "server_errors": 11,
+    "unexpected_status": 17,
+    "schema_violations": 1,
+    "findings": 21,
+    "priority_tiers": {
+      "P1": 9,
+      "P2": 4,
+      "P3": 7,
+      "P4": 1
+    }
+  },
+  "latency": {
+    "p50_ms": 5.1,
+    "p95_ms": 16.67,
+    "max_ms": 3005.67,
+    "mean_ms": 78.72
+  },
+  "model_metrics": {
+    "precision": 1.0,
+    "recall": 0.8333,
+    "f1": 0.9091,
+    "false_positive_rate": 0.0,
+    "test_set_size": 15,
+    "confusion_matrix": {
+      "tn": 9,
+      "fp": 0,
+      "fn": 1,
+      "tp": 5
+    },
+    "train_set_size": 32,
+    "positive_rate": 0.4255,
+    "feature_importance": {
+      "status_unexpected": 0.346,
+      "status_code": 0.129,
+      "is_security_probe": 0.1071,
+      "is_server_error": 0.0797,
+      "response_size": 0.0703,
+      "latency_ms": 0.0631,
+      "log_latency": 0.0496,
+      "echoes_probe_payload": 0.0447,
+      "n_schema_violations": 0.0353,
+      "is_json": 0.0346,
+      "is_success": 0.0212,
+      "is_client_error": 0.0194
+    }
+  },
+  "coverage": {
+    "endpoint_coverage": 1.0,
+    "parameter_coverage": 1.0,
+    "endpoints_covered": [
+      "DELETE /pets/{petId}",
+      "GET /health",
+      "GET /orders/{orderId}",
+      "GET /pets",
+      "GET /pets/search",
+      "GET /pets/{petId}",
+      "POST /pets"
+    ]
+  },
+  "defect_evaluation": {
+    "total_seeded": 8,
+    "detected_count": 8,
+    "detection_rate": 1.0,
+    "detected": {
+      "D1": {
+        "description": "Negative / non-integer petId returns 500 instead of 400",
+        "category": "validation",
+        "endpoint": "GET /pets/{petId}",
+        "found_by": "getPet-002",
+        "priority": "P3",
+        "risk_score": 0.5716
+      },
+      "D2": {
+        "description": "Missing required 'name' field is accepted with 201 instead of 400",
+        "category": "validation",
+        "endpoint": "POST /pets",
+        "found_by": "createPet-002",
+        "priority": "P2",
+        "risk_score": 0.7278
+      },
+      "D3": {
+        "description": "Broken object-level authorization: any authenticated user can read any order",
+        "category": "security-bola",
+        "endpoint": "GET /orders/{orderId}",
+        "found_by": "getOrder-008",
+        "priority": "P1",
+        "risk_score": 0.8359
+      },
+      "D4": {
+        "description": "Latency degrades severely when limit parameter is large (no pagination cap)",
+        "category": "performance",
+        "endpoint": "GET /pets",
+        "found_by": "listPets-007",
+        "priority": "P4",
+        "risk_score": 0.405
+      },
+      "D5": {
+        "description": "Oversized name (>256 chars) causes unhandled 500",
+        "category": "validation",
+        "endpoint": "POST /pets",
+        "found_by": "createPet-003",
+        "priority": "P1",
+        "risk_score": 0.7737
+      },
+      "D6": {
+        "description": "SQL-like injection payload is echoed back unsanitised in an error trace",
+        "category": "security-injection",
+        "endpoint": "GET /pets/search",
+        "found_by": "searchPets-007",
+        "priority": "P1",
+        "risk_score": 0.7622
+      },
+      "D7": {
+        "description": "Missing auth token is accepted -- endpoint does not enforce authentication",
+        "category": "auth",
+        "endpoint": "DELETE /pets/{petId}",
+        "found_by": "deletePet-006",
+        "priority": "P1",
+        "risk_score": 0.773
+      },
+      "D8": {
+        "description": "For petId>900 the response omits the required 'status' field (schema drift)",
+        "category": "schema",
+        "endpoint": "GET /pets/{petId}",
+        "found_by": "getPet-005",
+        "priority": "P3",
+        "risk_score": 0.4901
+      }
+    },
+    "missed": {}
+  },
+  "timings": {
+    "m1_parse_s": 0.001,
+    "m2_generate_s": 0.001,
+    "m3_execute_s": 3.013,
+    "m4_detect_s": 0.755,
+    "m5_prioritise_s": 0.0,
+    "total_s": 3.881
+  },
+  "findings": [
+    {
+      "test_id": "createPet-010",
+      "endpoint": "POST /pets",
+      "category": "security",
+      "intent": "Injection payload in body field 'tag'",
+      "status_code": 201,
+      "latency_ms": 4.7,
+      "anomaly_score": 0.7454,
+      "supervised_prob": 0.925,
+      "isolation_outlier": true,
+      "label": "security",
+      "evidence": "Injection payload reflected in the response body (HTTP 201) -- possible information disclosure.",
+      "risk_score": 0.8866,
+      "priority": "P1"
+    },
+    {
+      "test_id": "createPet-009",
+      "endpoint": "POST /pets",
+      "category": "security",
+      "intent": "Injection payload in body field 'name'",
+      "status_code": 201,
+      "latency_ms": 4.92,
+      "anomaly_score": 0.7352,
+      "supervised_prob": 0.9,
+      "isolation_outlier": true,
+      "label": "security",
+      "evidence": "Injection payload reflected in the response body (HTTP 201) -- possible information disclosure.",
+      "risk_score": 0.8845,
+      "priority": "P1"
+    },
+    {
+      "test_id": "getOrder-008",
+      "endpoint": "GET /orders/{orderId}",
+      "category": "security",
+      "intent": "Object requested while authenticated as a different user (BOLA probe)",
+      "status_code": 200,
+      "latency_ms": 3.83,
+      "anomaly_score": 0.6793,
+      "supervised_prob": 0.99,
+      "isolation_outlier": false,
+      "label": "security",
+      "evidence": "Probe succeeded with HTTP 200 -- broken object-level authorization.",
+      "risk_score": 0.8359,
+      "priority": "P1"
+    },
+    {
+      "test_id": "deletePet-008",
+      "endpoint": "DELETE /pets/{petId}",
+      "category": "security",
+      "intent": "Object requested while authenticated as a different user (BOLA probe)",
+      "status_code": 200,
+      "latency_ms": 6.96,
+      "anomaly_score": 0.7016,
+      "supervised_prob": 0.955,
+      "isolation_outlier": false,
+      "label": "security",
+      "evidence": "Probe succeeded with HTTP 200 -- broken object-level authorization.",
+      "risk_score": 0.7778,
+      "priority": "P1"
+    },
+    {
+      "test_id": "createPet-003",
+      "endpoint": "POST /pets",
+      "category": "negative",
+      "intent": "Request body has wrong type for a required field",
+      "status_code": 500,
+      "latency_ms": 16.67,
+      "anomaly_score": 0.8559,
+      "supervised_prob": 1.0,
+      "isolation_outlier": true,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Request body has wrong type for a required field.",
+      "risk_score": 0.7737,
+      "priority": "P1"
+    },
+    {
+      "test_id": "deletePet-006",
+      "endpoint": "DELETE /pets/{petId}",
+      "category": "security",
+      "intent": "Protected endpoint called without an authentication token",
+      "status_code": 200,
+      "latency_ms": 2.78,
+      "anomaly_score": 0.6775,
+      "supervised_prob": 0.96,
+      "isolation_outlier": false,
+      "label": "security",
+      "evidence": "Probe succeeded with HTTP 200 -- missing authentication.",
+      "risk_score": 0.773,
+      "priority": "P1"
+    },
+    {
+      "test_id": "deletePet-007",
+      "endpoint": "DELETE /pets/{petId}",
+      "category": "security",
+      "intent": "Protected endpoint called with a malformed token",
+      "status_code": 200,
+      "latency_ms": 3.71,
+      "anomaly_score": 0.6566,
+      "supervised_prob": 0.995,
+      "isolation_outlier": false,
+      "label": "security",
+      "evidence": "Probe succeeded with HTTP 200 -- missing authentication.",
+      "risk_score": 0.7688,
+      "priority": "P1"
+    },
+    {
+      "test_id": "searchPets-007",
+      "endpoint": "GET /pets/search",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "status_code": 500,
+      "latency_ms": 11.28,
+      "anomaly_score": 0.9362,
+      "supervised_prob": 0.995,
+      "isolation_outlier": true,
+      "label": "security",
+      "evidence": "Injection payload reflected in the response body (HTTP 500) -- possible information disclosure.",
+      "risk_score": 0.7622,
+      "priority": "P1"
+    },
+    {
+      "test_id": "searchPets-006",
+      "endpoint": "GET /pets/search",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "status_code": 500,
+      "latency_ms": 2.81,
+      "anomaly_score": 0.9212,
+      "supervised_prob": 0.975,
+      "isolation_outlier": true,
+      "label": "security",
+      "evidence": "Injection payload reflected in the response body (HTTP 500) -- possible information disclosure.",
+      "risk_score": 0.7592,
+      "priority": "P1"
+    },
+    {
+      "test_id": "createPet-006",
+      "endpoint": "POST /pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: over-maxlength",
+      "status_code": 500,
+      "latency_ms": 10.13,
+      "anomaly_score": 0.6804,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Body field 'name' at boundary: over-maxlength.",
+      "risk_score": 0.7386,
+      "priority": "P2"
+    },
+    {
+      "test_id": "createPet-002",
+      "endpoint": "POST /pets",
+      "category": "negative",
+      "intent": "Required body field 'name' omitted",
+      "status_code": 201,
+      "latency_ms": 3.24,
+      "anomaly_score": 0.6266,
+      "supervised_prob": 0.88,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "HTTP 201 returned, but the contract declares [400, 422] for this request.",
+      "risk_score": 0.7278,
+      "priority": "P2"
+    },
+    {
+      "test_id": "deletePet-002",
+      "endpoint": "DELETE /pets/{petId}",
+      "category": "negative",
+      "intent": "Path parameter 'petId' has an invalid type",
+      "status_code": 405,
+      "latency_ms": 4.07,
+      "anomaly_score": 0.8287,
+      "supervised_prob": 0.88,
+      "isolation_outlier": true,
+      "label": "regression",
+      "evidence": "HTTP 405 returned, but the contract declares [400, 404, 422] for this request.",
+      "risk_score": 0.6682,
+      "priority": "P2"
+    },
+    {
+      "test_id": "searchPets-008",
+      "endpoint": "GET /pets/search",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "status_code": 500,
+      "latency_ms": 5.9,
+      "anomaly_score": 0.8457,
+      "supervised_prob": 0.995,
+      "isolation_outlier": true,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Injection payload in query parameter 'q'.",
+      "risk_score": 0.6091,
+      "priority": "P2"
+    },
+    {
+      "test_id": "searchPets-001",
+      "endpoint": "GET /pets/search",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "status_code": 500,
+      "latency_ms": 5.01,
+      "anomaly_score": 0.7366,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Valid request with schema-conformant values.",
+      "risk_score": 0.5873,
+      "priority": "P3"
+    },
+    {
+      "test_id": "searchPets-005",
+      "endpoint": "GET /pets/search",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: over-maxlength",
+      "status_code": 500,
+      "latency_ms": 11.76,
+      "anomaly_score": 0.6818,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Query parameter 'q' at boundary: over-maxlength.",
+      "risk_score": 0.5764,
+      "priority": "P3"
+    },
+    {
+      "test_id": "searchPets-002",
+      "endpoint": "GET /pets/search",
+      "category": "negative",
+      "intent": "Required query parameter 'q' omitted",
+      "status_code": 500,
+      "latency_ms": 6.68,
+      "anomaly_score": 0.6786,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Required query parameter 'q' omitted.",
+      "risk_score": 0.5757,
+      "priority": "P3"
+    },
+    {
+      "test_id": "searchPets-003",
+      "endpoint": "GET /pets/search",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: empty-string",
+      "status_code": 500,
+      "latency_ms": 11.7,
+      "anomaly_score": 0.6774,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Query parameter 'q' at boundary: empty-string.",
+      "risk_score": 0.5755,
+      "priority": "P3"
+    },
+    {
+      "test_id": "searchPets-004",
+      "endpoint": "GET /pets/search",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: at-maxlength",
+      "status_code": 500,
+      "latency_ms": 8.03,
+      "anomaly_score": 0.6578,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Query parameter 'q' at boundary: at-maxlength.",
+      "risk_score": 0.5716,
+      "priority": "P3"
+    },
+    {
+      "test_id": "getPet-002",
+      "endpoint": "GET /pets/{petId}",
+      "category": "negative",
+      "intent": "Path parameter 'petId' has an invalid type",
+      "status_code": 500,
+      "latency_ms": 7.8,
+      "anomaly_score": 0.6578,
+      "supervised_prob": 1.0,
+      "isolation_outlier": false,
+      "label": "regression",
+      "evidence": "Unhandled server error (HTTP 500) for input described as: Path parameter 'petId' has an invalid type.",
+      "risk_score": 0.5716,
+      "priority": "P3"
+    },
+    {
+      "test_id": "getPet-005",
+      "endpoint": "GET /pets/{petId}",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: very-large",
+      "status_code": 200,
+      "latency_ms": 4.74,
+      "anomaly_score": 0.5878,
+      "supervised_prob": 0.685,
+      "isolation_outlier": false,
+      "label": "schema-drift",
+      "evidence": "Response violates the declared success schema: $.status: required field missing",
+      "risk_score": 0.4901,
+      "priority": "P3"
+    },
+    {
+      "test_id": "listPets-007",
+      "endpoint": "GET /pets",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: far-above-maximum",
+      "status_code": 200,
+      "latency_ms": 3005.67,
+      "anomaly_score": 0.5,
+      "supervised_prob": 0.0,
+      "isolation_outlier": true,
+      "label": "performance",
+      "evidence": "Response took 3006 ms (>1000 ms threshold).",
+      "risk_score": 0.405,
+      "priority": "P4"
+    }
+  ],
+  "results": [
+    {
+      "test_id": "createPet-001",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 201,
+      "latency_ms": 3.01,
+      "expected_status": [
+        201
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 56,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 52, \"name\": \"abc\", \"status\": \"available\", \"tag\": \"abc\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-002",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "negative",
+      "intent": "Required body field 'name' omitted",
+      "security_probe": null,
+      "status_code": 201,
+      "latency_ms": 3.24,
+      "expected_status": [
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 55,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 51, \"name\": null, \"status\": \"available\", \"tag\": \"abc\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-003",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "negative",
+      "intent": "Request body has wrong type for a required field",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 16.67,
+      "expected_status": [
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "createPet-004",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: empty-string",
+      "security_probe": null,
+      "status_code": 201,
+      "latency_ms": 9.89,
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 53,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 54, \"name\": \"\", \"status\": \"available\", \"tag\": \"abc\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-005",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: at-maxlength",
+      "security_probe": null,
+      "status_code": 201,
+      "latency_ms": 8.57,
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 309,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 53, \"name\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"status\": \"available\", \"tag\": \"abc\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-006",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: over-maxlength",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 10.13,
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "createPet-007",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "boundary",
+      "intent": "Body field 'tag' at boundary: empty-string",
+      "security_probe": null,
+      "status_code": 201,
+      "latency_ms": 5.18,
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 53,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 56, \"name\": \"abc\", \"status\": \"available\", \"tag\": \"\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-008",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "boundary",
+      "intent": "Body field 'tag' at boundary: very-long",
+      "security_probe": null,
+      "status_code": 201,
+      "latency_ms": 3.71,
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 565,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 55, \"name\": \"abc\", \"status\": \"available\", \"tag\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-009",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "security",
+      "intent": "Injection payload in body field 'name'",
+      "security_probe": "injection",
+      "status_code": 201,
+      "latency_ms": 4.92,
+      "expected_status": [
+        201,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 64,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 57, \"name\": \"' OR '1'='1\", \"status\": \"available\", \"tag\": \"abc\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "createPet-010",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "security",
+      "intent": "Injection payload in body field 'tag'",
+      "security_probe": "injection",
+      "status_code": 201,
+      "latency_ms": 4.7,
+      "expected_status": [
+        201,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 64,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 58, \"name\": \"abc\", \"status\": \"available\", \"tag\": \"' OR '1'='1\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-001",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/5",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 4.94,
+      "expected_status": [
+        200,
+        201
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 14,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 5}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-002",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/not-an-int",
+      "category": "negative",
+      "intent": "Path parameter 'petId' has an invalid type",
+      "security_probe": null,
+      "status_code": 405,
+      "latency_ms": 4.07,
+      "expected_status": [
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 153,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>405 Method Not Allowed</title>\n<h1>Method Not Allowed</h1>\n<p>The method is not allowed for the requested URL.</p>\n",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-003",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/1",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: at-minimum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 3.83,
+      "expected_status": [
+        200,
+        201,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 14,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 1}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-004",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/0",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: below-minimum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 3.38,
+      "expected_status": [
+        200,
+        201,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 14,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 0}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-005",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/100000",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: very-large",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 3.65,
+      "expected_status": [
+        200,
+        201,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 19,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 100000}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-006",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/14",
+      "category": "security",
+      "intent": "Protected endpoint called without an authentication token",
+      "security_probe": "auth-bypass",
+      "status_code": 200,
+      "latency_ms": 2.78,
+      "expected_status": [
+        401,
+        403
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 15,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 14}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-007",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/2",
+      "category": "security",
+      "intent": "Protected endpoint called with a malformed token",
+      "security_probe": "auth-bypass",
+      "status_code": 200,
+      "latency_ms": 3.71,
+      "expected_status": [
+        401,
+        403
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 14,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 2}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "deletePet-008",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "url": "http://127.0.0.1:5099/pets/1",
+      "category": "security",
+      "intent": "Object requested while authenticated as a different user (BOLA probe)",
+      "security_probe": "bola",
+      "status_code": 200,
+      "latency_ms": 6.96,
+      "expected_status": [
+        403,
+        404
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 14,
+      "content_type": "application/json",
+      "body_preview": "{\"deleted\": 1}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-001",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/3",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 6.59,
+      "expected_status": [
+        200
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 46,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 3, \"ownerId\": 100, \"petId\": 4, \"quantity\": 4}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-002",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/not-an-int",
+      "category": "negative",
+      "intent": "Path parameter 'orderId' has an invalid type",
+      "security_probe": null,
+      "status_code": 404,
+      "latency_ms": 3.11,
+      "expected_status": [
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 207,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\n",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-003",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/1",
+      "category": "boundary",
+      "intent": "Path parameter 'orderId' at boundary: at-minimum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 4.93,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 46,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 1, \"ownerId\": 101, \"petId\": 2, \"quantity\": 2}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-004",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/0",
+      "category": "boundary",
+      "intent": "Path parameter 'orderId' at boundary: below-minimum",
+      "security_probe": null,
+      "status_code": 404,
+      "latency_ms": 4.6,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 22,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"not found\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-005",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/100000",
+      "category": "boundary",
+      "intent": "Path parameter 'orderId' at boundary: very-large",
+      "security_probe": null,
+      "status_code": 404,
+      "latency_ms": 6.93,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 22,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"not found\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-006",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/1",
+      "category": "security",
+      "intent": "Protected endpoint called without an authentication token",
+      "security_probe": "auth-bypass",
+      "status_code": 401,
+      "latency_ms": 5.1,
+      "expected_status": [
+        401,
+        403
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 25,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"unauthorized\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-007",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/18",
+      "category": "security",
+      "intent": "Protected endpoint called with a malformed token",
+      "security_probe": "auth-bypass",
+      "status_code": 401,
+      "latency_ms": 2.35,
+      "expected_status": [
+        401,
+        403
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 25,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"unauthorized\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getOrder-008",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/orders/7",
+      "category": "security",
+      "intent": "Object requested while authenticated as a different user (BOLA probe)",
+      "security_probe": "bola",
+      "status_code": 200,
+      "latency_ms": 3.83,
+      "expected_status": [
+        403,
+        404
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 46,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 7, \"ownerId\": 101, \"petId\": 8, \"quantity\": 4}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getPet-001",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/4",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 3.82,
+      "expected_status": [
+        200
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 57,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 4, \"name\": \"pet-4\", \"status\": \"available\", \"tag\": \"cat\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getPet-002",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/not-an-int",
+      "category": "negative",
+      "intent": "Path parameter 'petId' has an invalid type",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 7.8,
+      "expected_status": [
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "getPet-003",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/1",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: at-minimum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 10.19,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 57,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 1, \"name\": \"pet-1\", \"status\": \"available\", \"tag\": \"cat\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getPet-004",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/0",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: below-minimum",
+      "security_probe": null,
+      "status_code": 404,
+      "latency_ms": 7.29,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 22,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"not found\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "getPet-005",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/100000",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: very-large",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 4.74,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [
+        "$.status: required field missing"
+      ],
+      "response_size": 45,
+      "content_type": "application/json",
+      "body_preview": "{\"id\": 100000, \"name\": \"ghost\", \"tag\": \"unknown\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "health-001",
+      "endpoint": "GET /health",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/health",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 3.49,
+      "expected_status": [
+        200,
+        201
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 16,
+      "content_type": "application/json",
+      "body_preview": "{\"status\": \"ok\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-001",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 9.54,
+      "expected_status": [
+        200
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 1191,
+      "content_type": "application/json",
+      "body_preview": "{\"count\": 20, \"items\": [{\"id\": 1, \"name\": \"pet-1\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 2, \"name\": \"pet-2\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 3, \"name\": \"pet-3\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 4, \"name\": \"pet-4\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 5, \"name\": \"pet-5\", \"status\": \"available\", \"tag\": \"bird\"}, {\"id\": 6, \"name\": \"pet-6\", \"status\": \"available\", ",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-002",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets?limit=81",
+      "category": "positive",
+      "intent": "Valid request exercising optional parameter 'limit'",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 10.66,
+      "expected_status": [
+        200
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 2978,
+      "content_type": "application/json",
+      "body_preview": "{\"count\": 50, \"items\": [{\"id\": 1, \"name\": \"pet-1\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 2, \"name\": \"pet-2\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 3, \"name\": \"pet-3\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 4, \"name\": \"pet-4\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 5, \"name\": \"pet-5\", \"status\": \"available\", \"tag\": \"bird\"}, {\"id\": 6, \"name\": \"pet-6\", \"status\": \"available\", ",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-003",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets?limit=0",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: at-minimum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 4.67,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 23,
+      "content_type": "application/json",
+      "body_preview": "{\"count\": 0, \"items\": []}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-004",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets?limit=-1",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: below-minimum",
+      "security_probe": null,
+      "status_code": 400,
+      "latency_ms": 11.96,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 39,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"limit must be non-negative\"}",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-005",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets?limit=100",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: at-maximum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 5.83,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 2978,
+      "content_type": "application/json",
+      "body_preview": "{\"count\": 50, \"items\": [{\"id\": 1, \"name\": \"pet-1\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 2, \"name\": \"pet-2\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 3, \"name\": \"pet-3\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 4, \"name\": \"pet-4\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 5, \"name\": \"pet-5\", \"status\": \"available\", \"tag\": \"bird\"}, {\"id\": 6, \"name\": \"pet-6\", \"status\": \"available\", ",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-006",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets?limit=101",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: above-maximum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 410.07,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 3966,
+      "content_type": "application/json",
+      "body_preview": "{\"count\": 54, \"items\": [{\"id\": 3, \"name\": \"pet-3\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 4, \"name\": \"pet-4\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 6, \"name\": \"pet-6\", \"status\": \"available\", \"tag\": \"dog\"}, {\"id\": 7, \"name\": \"pet-7\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 8, \"name\": \"pet-8\", \"status\": \"available\", \"tag\": \"dog\"}, {\"id\": 9, \"name\": \"pet-9\", \"status\": \"available\", \"",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "listPets-007",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets?limit=1000",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: far-above-maximum",
+      "security_probe": null,
+      "status_code": 200,
+      "latency_ms": 3005.67,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": true,
+      "schema_violations": [],
+      "response_size": 3966,
+      "content_type": "application/json",
+      "body_preview": "{\"count\": 54, \"items\": [{\"id\": 3, \"name\": \"pet-3\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 4, \"name\": \"pet-4\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 6, \"name\": \"pet-6\", \"status\": \"available\", \"tag\": \"dog\"}, {\"id\": 7, \"name\": \"pet-7\", \"status\": \"available\", \"tag\": \"cat\"}, {\"id\": 8, \"name\": \"pet-8\", \"status\": \"available\", \"tag\": \"dog\"}, {\"id\": 9, \"name\": \"pet-9\", \"status\": \"available\", \"",
+      "error": null,
+      "is_server_error": false
+    },
+    {
+      "test_id": "searchPets-001",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=abc",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 5.01,
+      "expected_status": [
+        200
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-002",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search",
+      "category": "negative",
+      "intent": "Required query parameter 'q' omitted",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 6.68,
+      "expected_status": [
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-003",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: empty-string",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 11.7,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-004",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: at-maxlength",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 8.03,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-005",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: over-maxlength",
+      "security_probe": null,
+      "status_code": 500,
+      "latency_ms": 11.76,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-006",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=%27+OR+%271%27%3D%271",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "security_probe": "injection",
+      "status_code": 500,
+      "latency_ms": 2.81,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 86,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"query failed\", \"trace\": \"SELECT * FROM pets WHERE name LIKE '%' OR '1'='1%'\"}",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-007",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=1%3B+DROP+TABLE+pets--",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "security_probe": "injection",
+      "status_code": 500,
+      "latency_ms": 11.28,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 95,
+      "content_type": "application/json",
+      "body_preview": "{\"error\": \"query failed\", \"trace\": \"SELECT * FROM pets WHERE name LIKE '%1; DROP TABLE pets--%'\"}",
+      "error": null,
+      "is_server_error": true
+    },
+    {
+      "test_id": "searchPets-008",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "url": "http://127.0.0.1:5099/pets/search?q=%3Cscript%3Ealert%281%29%3C%2Fscript%3E",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "security_probe": "injection",
+      "status_code": 500,
+      "latency_ms": 5.9,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "status_as_expected": false,
+      "schema_violations": [],
+      "response_size": 265,
+      "content_type": "text/html; charset=utf-8",
+      "body_preview": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n",
+      "error": null,
+      "is_server_error": true
+    }
+  ],
+  "test_cases": [
+    {
+      "test_id": "listPets-001",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "listPets-002",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "positive",
+      "intent": "Valid request exercising optional parameter 'limit'",
+      "query": {
+        "limit": 81
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "listPets-003",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: at-minimum",
+      "query": {
+        "limit": 0
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "listPets-004",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: below-minimum",
+      "query": {
+        "limit": -1
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "listPets-005",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: at-maximum",
+      "query": {
+        "limit": 100
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "listPets-006",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: above-maximum",
+      "query": {
+        "limit": 101
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "listPets-007",
+      "endpoint": "GET /pets",
+      "method": "GET",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Query parameter 'limit' at boundary: far-above-maximum",
+      "query": {
+        "limit": 1000
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-001",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "abc",
+        "tag": "abc"
+      },
+      "expected_status": [
+        201
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-002",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "negative",
+      "intent": "Required body field 'name' omitted",
+      "query": {},
+      "headers": {},
+      "body": {
+        "tag": "abc"
+      },
+      "expected_status": [
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-003",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "negative",
+      "intent": "Request body has wrong type for a required field",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": 12345,
+        "tag": "abc"
+      },
+      "expected_status": [
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-004",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: empty-string",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "",
+        "tag": "abc"
+      },
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-005",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: at-maxlength",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tag": "abc"
+      },
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-006",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Body field 'name' at boundary: over-maxlength",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tag": "abc"
+      },
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-007",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Body field 'tag' at boundary: empty-string",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "abc",
+        "tag": ""
+      },
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-008",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "boundary",
+      "intent": "Body field 'tag' at boundary: very-long",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "abc",
+        "tag": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "expected_status": [
+        201,
+        400,
+        413,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "createPet-009",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "security",
+      "intent": "Injection payload in body field 'name'",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "' OR '1'='1",
+        "tag": "abc"
+      },
+      "expected_status": [
+        201,
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": "injection"
+    },
+    {
+      "test_id": "createPet-010",
+      "endpoint": "POST /pets",
+      "method": "POST",
+      "path": "/pets",
+      "category": "security",
+      "intent": "Injection payload in body field 'tag'",
+      "query": {},
+      "headers": {},
+      "body": {
+        "name": "abc",
+        "tag": "' OR '1'='1"
+      },
+      "expected_status": [
+        201,
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": "injection"
+    },
+    {
+      "test_id": "searchPets-001",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {
+        "q": "abc"
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "searchPets-002",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "negative",
+      "intent": "Required query parameter 'q' omitted",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "searchPets-003",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: empty-string",
+      "query": {
+        "q": ""
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "searchPets-004",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: at-maxlength",
+      "query": {
+        "q": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "searchPets-005",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "boundary",
+      "intent": "Query parameter 'q' at boundary: over-maxlength",
+      "query": {
+        "q": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "items",
+          "count"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "pending",
+                    "sold"
+                  ]
+                }
+              }
+            }
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "searchPets-006",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "query": {
+        "q": "' OR '1'='1"
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": "injection"
+    },
+    {
+      "test_id": "searchPets-007",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "query": {
+        "q": "1; DROP TABLE pets--"
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": "injection"
+    },
+    {
+      "test_id": "searchPets-008",
+      "endpoint": "GET /pets/search",
+      "method": "GET",
+      "path": "/pets/search",
+      "category": "security",
+      "intent": "Injection payload in query parameter 'q'",
+      "query": {
+        "q": "<script>alert(1)</script>"
+      },
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": "injection"
+    },
+    {
+      "test_id": "getPet-001",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "path": "/pets/4",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getPet-002",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "path": "/pets/not-an-int",
+      "category": "negative",
+      "intent": "Path parameter 'petId' has an invalid type",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        400,
+        404,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "getPet-003",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "path": "/pets/1",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: at-minimum",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getPet-004",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "path": "/pets/0",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: below-minimum",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getPet-005",
+      "endpoint": "GET /pets/{petId}",
+      "method": "GET",
+      "path": "/pets/100000",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: very-large",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "tag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "deletePet-001",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/5",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        201
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "deletePet-002",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/not-an-int",
+      "category": "negative",
+      "intent": "Path parameter 'petId' has an invalid type",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        400,
+        404,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "deletePet-003",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/1",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: at-minimum",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        201,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "deletePet-004",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/0",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: below-minimum",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        201,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "deletePet-005",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/100000",
+      "category": "boundary",
+      "intent": "Path parameter 'petId' at boundary: very-large",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        201,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "deletePet-006",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/14",
+      "category": "security",
+      "intent": "Protected endpoint called without an authentication token",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        401,
+        403
+      ],
+      "expect_schema": null,
+      "security_probe": "auth-bypass"
+    },
+    {
+      "test_id": "deletePet-007",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/2",
+      "category": "security",
+      "intent": "Protected endpoint called with a malformed token",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer not-a-real-token"
+      },
+      "body": null,
+      "expected_status": [
+        401,
+        403
+      ],
+      "expect_schema": null,
+      "security_probe": "auth-bypass"
+    },
+    {
+      "test_id": "deletePet-008",
+      "endpoint": "DELETE /pets/{petId}",
+      "method": "DELETE",
+      "path": "/pets/1",
+      "category": "security",
+      "intent": "Object requested while authenticated as a different user (BOLA probe)",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-999"
+      },
+      "body": null,
+      "expected_status": [
+        403,
+        404
+      ],
+      "expect_schema": null,
+      "security_probe": "bola"
+    },
+    {
+      "test_id": "getOrder-001",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/3",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "petId",
+          "ownerId",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "petId": {
+            "type": "integer"
+          },
+          "ownerId": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getOrder-002",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/not-an-int",
+      "category": "negative",
+      "intent": "Path parameter 'orderId' has an invalid type",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        400,
+        404,
+        422
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    },
+    {
+      "test_id": "getOrder-003",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/1",
+      "category": "boundary",
+      "intent": "Path parameter 'orderId' at boundary: at-minimum",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "petId",
+          "ownerId",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "petId": {
+            "type": "integer"
+          },
+          "ownerId": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getOrder-004",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/0",
+      "category": "boundary",
+      "intent": "Path parameter 'orderId' at boundary: below-minimum",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "petId",
+          "ownerId",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "petId": {
+            "type": "integer"
+          },
+          "ownerId": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getOrder-005",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/100000",
+      "category": "boundary",
+      "intent": "Path parameter 'orderId' at boundary: very-large",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-100"
+      },
+      "body": null,
+      "expected_status": [
+        200,
+        400,
+        404,
+        422
+      ],
+      "expect_schema": {
+        "type": "object",
+        "required": [
+          "id",
+          "petId",
+          "ownerId",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "petId": {
+            "type": "integer"
+          },
+          "ownerId": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "security_probe": null
+    },
+    {
+      "test_id": "getOrder-006",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/1",
+      "category": "security",
+      "intent": "Protected endpoint called without an authentication token",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        401,
+        403
+      ],
+      "expect_schema": null,
+      "security_probe": "auth-bypass"
+    },
+    {
+      "test_id": "getOrder-007",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/18",
+      "category": "security",
+      "intent": "Protected endpoint called with a malformed token",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer not-a-real-token"
+      },
+      "body": null,
+      "expected_status": [
+        401,
+        403
+      ],
+      "expect_schema": null,
+      "security_probe": "auth-bypass"
+    },
+    {
+      "test_id": "getOrder-008",
+      "endpoint": "GET /orders/{orderId}",
+      "method": "GET",
+      "path": "/orders/7",
+      "category": "security",
+      "intent": "Object requested while authenticated as a different user (BOLA probe)",
+      "query": {},
+      "headers": {
+        "Authorization": "Bearer user-999"
+      },
+      "body": null,
+      "expected_status": [
+        403,
+        404
+      ],
+      "expect_schema": null,
+      "security_probe": "bola"
+    },
+    {
+      "test_id": "health-001",
+      "endpoint": "GET /health",
+      "method": "GET",
+      "path": "/health",
+      "category": "positive",
+      "intent": "Valid request with schema-conformant values",
+      "query": {},
+      "headers": {},
+      "body": null,
+      "expected_status": [
+        200,
+        201
+      ],
+      "expect_schema": null,
+      "security_probe": null
+    }
+  ]
+}

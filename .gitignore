@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+real_state/
+ci/out*/
+deck/node_modules/
+*.pid
