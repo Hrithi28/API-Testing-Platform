@@ -26,6 +26,15 @@ def schema_violations(data: Any, schema: Optional[Dict[str, Any]], path: str = "
         return []
     if data is None and (schema.get("nullable") or schema.get("x-nullable")):
         return []
+    alts = schema.get("x-alternatives")
+    if alts:                                   # oneOf / anyOf: conformant if ANY branch accepts the value
+        first: Optional[List[str]] = None
+        for a in alts:
+            v = schema_violations(data, a, path)
+            if not v:
+                return []
+            first = v if first is None else first
+        return first or []
     out: List[str] = []
     t = schema.get("type")
 
