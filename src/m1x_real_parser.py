@@ -128,7 +128,11 @@ class RealSpecParser(SpecParser):
                 has_null = any(isinstance(o, dict) and o.get("type") == "null" for o in s[key])
                 chosen = _first_non_null(s[key])
                 branch = self._simplify(chosen) if isinstance(chosen, dict) else {}
+                # keep every non-null branch so the conformance check can accept a value that matches any of them
+                alts = [self._simplify(o) for o in s[key] if isinstance(o, dict) and o.get("type") != "null"]
                 s = {**{k: v for k, v in s.items() if k != key}, **branch}
+                if len(alts) > 1:
+                    s["x-alternatives"] = alts
                 if has_null or s.get("nullable"):
                     s["nullable"] = True
         if "type" not in s:
